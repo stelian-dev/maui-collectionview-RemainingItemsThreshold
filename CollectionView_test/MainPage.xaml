@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionView_test.MainPage">
+
+    <ScrollView>
+        <CollectionView ItemsSource="{Binding Items}"
+                        RemainingItemsThreshold="5"
+                        RemainingItemsThresholdReachedCommand="{Binding LoadMoreItemsCommand}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="{StaticResource Gray100}"
+                            StrokeThickness="0.75"
+                            StrokeShape="RoundRectangle 6, 6, 6, 6"
+                            Margin="10"
+                            Padding="5">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor"
+                                                Value="Transparent" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Label Grid.Row="0"
+                               Text="{Binding Name}"
+                               TextColor="{StaticResource Gray600}"
+                               FontSize="20"
+                               FontAttributes="Bold" />
+                    </Border>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ScrollView>
+
+</ContentPage>
